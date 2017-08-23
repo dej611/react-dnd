@@ -1,94 +1,28 @@
 {
-  "name": "react-dnd-master",
-  "private": true,
-  "description": "React-DnD Monorepo",
+  "name": "react-dnd-html5-backend",
+  "version": "2.5.0",
+  "description": "HTML5 backend for React DnD",
+  "main": "lib/index.js",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/react-dnd/react-dnd.git"
   },
-  "keywords": [
-    "react",
-    "reactjs",
-    "file",
-    "drag",
-    "drop",
-    "html5",
-    "draggable",
-    "droppable",
-    "drag-and-drop",
-    "dnd",
-    "javascript",
-    "react-component",
-    "hoc"
-  ],
-  "author": "Dan Abramov <dan.abramov@me.com> (http://github.com/gaearon)",
-  "contributors": [
-    "Chris Trevino <darthtrevino@gmail.com> (http://github.com/darthtrevino)",
-    "Jordan Gensler (http://github.com/kesne)",
-    "Gagan (https://github.com/thetechie)"
-  ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/react-dnd/react-dnd/issues"
-  },
-  "homepage": "https://github.com/react-dnd/react-dnd",
   "scripts": {
-    "start": "./scripts/startSiteDevServer.sh",
-    "build-site": "./scripts/buildStaticSite.sh",
-    "publish-site": "./scripts/publishStaticSite.sh",
-    "postinstall": "lerna bootstrap",
-    "unit_test": "jest",
-    "jest:watch": "jest --watch",
-    "jest:cov": "jest --coverage",
-    "lint": "eslint .",
-    "test_modules": "lerna run test --stream",
-    "test": "npm-run-all lint jest:cov test_modules"
+    "clean": "../../node_modules/.bin/rimraf lib",
+    "build:lib": "../../node_modules/.bin/babel src --out-dir lib",
+    "build:umd": "../../node_modules/.bin/webpack",
+    "build": "../../node_modules/.bin/npm-run-all --parallel build:*",
+    "test": "../../node_modules/.bin/npm-run-all clean build",
+    "prepublish": "npm test"
   },
   "devDependencies": {
-    "autoprefixer": "^7.1.2",
-    "babel-cli": "^6.24.1",
-    "babel-eslint": "^7.2.3",
-    "babel-loader": "^7.1.1",
-    "babel-plugin-transform-decorators-legacy": "^1.3.4",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
-    "babel-register": "^6.24.1",
-    "css-loader": "^0.28.4",
-    "eslint": "^3.14.0",
-    "eslint-config-airbnb": "^14.0.0",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^3.0.2",
-    "eslint-plugin-react": "^6.9.0",
-    "extract-text-webpack-plugin": "^2.0.0",
-    "faker": "^3.1.0",
-    "file-loader": "^0.11.2",
-    "html-loader": "^0.4.5",
-    "jest": "^20.0.4",
-    "karma-sourcemap-loader": "^0.3.6",
-    "lerna": "^2.0.0",
-    "less": "^2.7.2",
-    "less-loader": "^4.0.5",
-    "marked": "^0.3.6",
-    "npm-run-all": "^4.0.2",
-    "null-loader": "^0.1.0",
-    "postcss": "^6.0.6",
-    "prop-types": "^15.5.10",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-frame-component": "^1.1.0",
-    "react-hot-loader": "^1.2.3",
-    "rimraf": "^2.6.1",
-    "style-loader": "^0.18.2",
-    "url-loader": "^0.5.9",
-    "webpack": "^3.1.0",
-    "webpack-dev-server": "^2.5.1"
+    "react-dnd": "^2.4.0"
   },
-  "jest": {
-    "moduleNameMapper": {
-      "^react-dnd$": "<rootDir>/packages/react-dnd/src",
-      "react-dnd-html5-backend": "<rootDir>//packages/react-dnd-html5-backend/src",
-      "dnd-core": "<rootDir>//packages/dnd-core/src"
-    }
+  "dependencies": {
+    "lodash": "^4.2.0"
+  },
+  "peerDependencies": {
+    "react-dnd": "^2.4.0"
   }
 }
